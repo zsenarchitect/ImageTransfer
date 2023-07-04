@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Upload Image</h2>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="file" id="imageUpload" name="image" accept="image/*" required>
+  <button type="submit">Upload</button>
+</form>
+
+<!-- A div to contain the preview -->
+<div id="preview"></div>
+
+<script>
+// Add an event listener to the file input field
+document.getElementById('imageUpload').addEventListener('change', function(e) {
+  var img = new Image();
+  img.onload = function() {
+    var canvas = document.createElement('canvas');
+    var maxWidth = 800, maxHeight = 800;
+    var width = img.width, height = img.height;
+    
+    // Check if the current width is larger than the max
+    if(width > height) {
+      if(width > maxWidth) {
+        height *= maxWidth / width;
+        width = maxWidth;
+      }
+    } else {
+      if(height > maxHeight) {
+        width *= maxHeight / height;
+        height = maxHeight;
+      }
+    }
+    
+    // set canvas dimensions
+    canvas.width = width;
+    canvas.height = height;
+    
+    // draw the image on the canvas
+    canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+    
+    // get the image data from the canvas
+    var dataUrl = canvas.toDataURL('image/jpeg');
+    
+    // create an img element with the data URL as the source
+    var outputImg = document.createElement('img');
+    outputImg.src = dataUrl;
+    
+    // append the img element to the preview div
+    var previewDiv = document.getElementById('preview');
+    previewDiv.innerHTML = '';  // clear the preview
+    previewDiv.appendChild(outputImg);
+  }
+  
+  // read the image file as a data URL
+  var reader = new FileReader();
+  reader.readAsDataURL(e.target.files[0]);
+  reader.onload = function(e) {
+    img.src = e.target.result;
+  }
+});
+</script>
+
+</body>
+</html>
