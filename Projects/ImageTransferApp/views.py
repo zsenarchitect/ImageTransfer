@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from .models import Image
 from .forms import ImageForm
 
+from django.http import JsonResponse
+
+from django.core import serializers
+
 
 def image_upload(request):
     if request.method == 'POST':
@@ -26,3 +30,7 @@ def all_images(request):
     images = Image.objects.all()
     return render(request, 'all_images.html', {'images': images})
 
+def get_all_images_json(request):
+    images = Image.objects.all()
+    image_list = [{"name": image.name, "url": request.build_absolute_uri(image.image.url)} for image in images]
+    return JsonResponse(image_list, safe=False)
