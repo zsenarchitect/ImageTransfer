@@ -9,6 +9,12 @@
 
 <body>
 
+  <header>
+    <img src="{% static 'main_logo.png' %}" alt="Logo" class="logo">
+  </header>
+
+
+
   <h2>This is your most recent upload</h2>
 {% for image in images %}
   <img src="{{ image.image.url }}" alt="Uploaded image">

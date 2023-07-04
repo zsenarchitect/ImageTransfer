@@ -60,6 +60,22 @@ body {
 
 
 
+
+
 .uploaded-image:hover {
   transform: scale(1.05);
+}
+
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 120px;
+}
+
+
+header {
+  padding-bottom: 150px;
 }
