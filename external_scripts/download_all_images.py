@@ -7,6 +7,7 @@ import requests
 import os
 
 # Get the data from the endpoint
+# this url need to be replaced by actual website url later.
 response = requests.get('http://127.0.0.1:8000/api/images/')
 
 # Make sure the request was successful
