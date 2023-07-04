@@ -75,10 +75,20 @@ WSGI_APPLICATION = 'Projects.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'imagetransferapp-db', 
+        'USER': 'admin', 
+        'PASSWORD': 'Iliveinapt2N!', 
+        'HOST': 'imagetransferapp-db.c4wzcvpbyzxk.us-east-2.rds.amazonaws.com', 
+        'PORT': '3306',
     }
 }
 
