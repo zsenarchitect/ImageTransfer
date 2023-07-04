@@ -23,6 +23,8 @@ def image_upload(request):
 
 def image_view(request):
     images = Image.objects.all()
+    if len(images) == 0:
+        return render(request, 'upload.html', {'form': ImageForm()})
     recent = images[len(images)-1]
     return render(request, 'view.html', {'images': [recent]})
 
