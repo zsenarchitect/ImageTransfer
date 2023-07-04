@@ -1,12 +1,23 @@
-
+{% load static %}
 
 <!DOCTYPE html>
 <html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+
 <body>
 
+  <h2>This is your most recent upload</h2>
 {% for image in images %}
   <img src="{{ image.image.url }}" alt="Uploaded image">
 {% endfor %}
+
+
+<!-- Button to navigate to the all images page -->
+<a href="/upload/" class="button">Upload More Image</a>
+
 
 </body>
 </html>

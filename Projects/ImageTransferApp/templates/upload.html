@@ -1,8 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
+
+  <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+  </head>
+
+
 <body>
 
-<h2>Upload Image</h2>
+<h2>Upload Image Here</h2>
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
   <input type="file" id="imageUpload" name="image" accept="image/*" required>
@@ -11,6 +18,15 @@
 
 <!-- A div to contain the preview -->
 <div id="preview"></div>
+
+<!-- Container for the buttons -->
+<div class="button-container">
+  <!-- Button to navigate to the all images page -->
+  <a href="/all/" class="button">View All Images</a>
+
+  <!-- Button to navigate to the view page -->
+  <a href="/view/" class="button">View Most Recent Upload</a>
+</div>
 
 <script>
 // Add an event listener to the file input field
@@ -62,6 +78,9 @@ document.getElementById('imageUpload').addEventListener('change', function(e) {
   }
 });
 </script>
+
+
+
 
 </body>
 </html>

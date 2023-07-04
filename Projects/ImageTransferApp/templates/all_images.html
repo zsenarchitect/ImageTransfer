@@ -1,10 +1,29 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
+
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+      </head>
+
+
 <body>
 
+    <h2>All your previous uploads</h2>
+<!-- Button to navigate to the all images page -->
+<a href="/upload/" class="button">Upload More Image</a>
+
+
 {% for image in images %}
-  <img src="{{ image.image.url }}" alt="Uploaded image">
+  <div class="image-container">
+    <img class="uploaded-image" src="{{ image.image.url }}" alt="Uploaded image">
+    <p class="image-caption">{{ image.name }}</p>
+  </div>
 {% endfor %}
+
+
+
 
 </body>
 </html>
