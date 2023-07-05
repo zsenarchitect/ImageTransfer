@@ -123,7 +123,7 @@ STATIC_URL = '/static/'
 
 # This is not always necessary, but it may help in some cases
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    BASE_DIR / 'ImageTransferApp/static',
 ]
 
 
