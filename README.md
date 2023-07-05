@@ -14,3 +14,7 @@ python manage.py runserver 10.20.132.143:192.168.1.50:8000
 to migrat
 python manage.py makemigrations
 python manage.py migrate
+
+
+to check IP adress in terminal
+P:\>ipconfig
